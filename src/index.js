@@ -38,7 +38,7 @@ module.exports.pitch = function pitch(request) {
     if (module.hot && typeof window !== 'undefined' && window.document) {
       var removeCss = function() {};
       module.hot.accept(${stringifyRequest(this, `!!${request}`)}, function() {
-        css = require(${stringifyRequest(this, `!!${request}`)});
+        css = getCss(require(${stringifyRequest(this, `!!${request}`)}));
         content = typeof css === 'string' ? [[module.id, css, '']] : css;
         removeCss = insertCss(content, { replace: true });
       });
